@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# TODO before deploy: uncomment and set the real domain
+# Sitemap: https://YOUR-DOMAIN/sitemap.xml
