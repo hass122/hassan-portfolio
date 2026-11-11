@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- TODO before deploy: replace YOUR-DOMAIN with the real site URL (e.g. your Vercel domain). -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://YOUR-DOMAIN/</loc>
+    <loc>https://hassan-portfolio-pied.vercel.app/</loc>
   </url>
 </urlset>
