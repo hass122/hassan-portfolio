@@ -15,7 +15,7 @@ export default function Certifications() {
           <li key={c.id}>
             <Card className="h-full">
               {c.image && <img src={c.image} alt={`${c.title} certificate`} loading="lazy" className="mb-4 rounded-lg" />}
-              <h3 className="text-lg font-bold">{c.title}</h3>
+              <h3 className="text-xl">{c.title}</h3>
               <p className="mt-1 text-sm text-muted">{c.issuer}{c.date ? ` · ${c.date}` : ''}</p>
               {c.credentialUrl && (
                 <Button href={c.credentialUrl} external variant="secondary" className="mt-4">View certificate</Button>

@@ -5,38 +5,29 @@ export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
   theme: {
     extend: {
+      // Tokens come from CSS variables, so each theme (Warm Editorial / Midnight Editorial) has its own palette.
       colors: {
-        bg: c('bg'),
-        surface: c('surface'),
-        card: c('card'),
-        elevated: c('elevated'),
-        line: c('line'),
-        field: c('field'), // stronger border for inputs, timeline and icon buttons
-        ink: c('ink'), // main heading / text color
-        body: c('body'), // strong paragraph color
+        bg: c('bg'), // page canvas
+        surface: c('surface'), // alternate section surface
+        card: c('card'), // cards, forms
+        line: c('line'), // borders and dividers
+        field: c('field'), // slightly stronger border for inputs and the timeline
+        ink: c('ink'), // primary text
         muted: c('muted'), // secondary text
-        sub: c('sub'), // secondary heading color
-        indigo: { DEFAULT: c('accent') }, // primary accent
-        violet: { DEFAULT: c('purple') }, // royal purple
-        cyan: { DEFAULT: c('cyan') }, // secondary accent (electric blue in light, cyan in dark)
-        aqua: c('aqua'),
-        oncyan: c('oncyan'),
-        btn2border: c('btn2border'),
-        btn2text: c('btn2text'),
+        accent: c('accent'), // primary accent (olive / antique brass)
+        clay: c('clay'), // secondary accent (terracotta / muted brown), small details only
+        onaccent: c('onaccent'), // text on top of the primary accent
         success: c('success'),
         danger: c('danger'),
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Manrope', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+        mono: ['"IBM Plex Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       maxWidth: { content: '1200px' },
-      borderRadius: { btn: '12px', card: '18px', feature: '24px' },
-      boxShadow: { soft: 'var(--shadow-soft)', glow: 'var(--shadow-glow)' },
-      backgroundImage: {
-        'grad-primary': 'linear-gradient(135deg, rgb(var(--c-accent)), rgb(var(--c-purple)))',
-        'grad-secondary': 'linear-gradient(135deg, rgb(var(--c-cyan)), rgb(var(--c-aqua)))',
-      },
+      borderRadius: { btn: '8px', card: '12px', feature: '16px' },
+      boxShadow: { soft: 'var(--shadow-soft)' },
     },
   },
   plugins: [],

@@ -9,7 +9,7 @@ import Button from '../common/Button.jsx'
 import Reveal from '../common/Reveal.jsx'
 
 const inputCls =
-  'mt-1.5 w-full rounded-xl border bg-bg px-4 py-3 text-ink placeholder:text-muted/60 focus:border-cyan focus:outline-none disabled:opacity-60'
+  'mt-1.5 w-full rounded-lg border bg-bg px-4 py-3 text-ink placeholder:text-muted/60 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25 disabled:opacity-60'
 
 function Field({ id, label, error, children }) {
   return (
@@ -38,11 +38,11 @@ export default function Contact() {
 
   return (
     <Section id="contact" alt>
-      <div className="grid gap-12 lg:grid-cols-2">
+      <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
         <Reveal>
           <SectionHeading note="say hello" title="Let’s talk." description="Have a role, an internship or a project in mind? I’d like to hear about it." />
-          <a href={`mailto:${personal.email}`} className="inline-flex max-w-full items-center gap-3 break-all text-ink hover:text-cyan">
-            <Mail size={20} className="text-cyan" aria-hidden="true" />
+          <a href={`mailto:${personal.email}`} className="inline-flex max-w-full items-center gap-3 break-all text-ink underline-offset-4 transition-colors hover:text-accent hover:underline">
+            <Mail size={20} className="text-accent" aria-hidden="true" />
             {personal.email}
           </a>
           <SocialLinks skipEmail withLabels className="mt-6" />

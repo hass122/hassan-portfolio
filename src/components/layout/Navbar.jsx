@@ -40,13 +40,13 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b transition-colors duration-200 ${
-        scrolled || open ? 'border-line bg-bg/85 shadow-soft backdrop-blur-md' : 'border-transparent bg-transparent'
+      className={`sticky top-0 z-40 border-b bg-bg transition-colors duration-200 ${
+        scrolled || open ? 'border-line' : 'border-transparent'
       }`}
     >
       <nav aria-label="Main" className="mx-auto flex h-16 max-w-content items-center justify-between gap-4 px-6">
-        <a href="#home" className="flex items-center gap-3 font-display text-lg font-extrabold">
-          <span className="grid h-9 w-9 place-items-center rounded-[10px] bg-grad-primary text-sm text-white">{personal.initials}</span>
+        <a href="#home" className="flex items-center gap-3 font-display text-xl">
+          <span className="grid h-9 w-9 place-items-center rounded-full border border-ink/70 text-sm">{personal.initials}</span>
           <span>{personal.name}</span>
         </a>
 
@@ -56,14 +56,12 @@ export default function Navbar() {
               <a
                 href={`#${id}`}
                 aria-current={active === id ? 'true' : undefined}
-                className={`relative rounded-lg px-3 py-2 text-[15px] transition-colors ${
-                  active === id ? 'font-semibold text-indigo' : 'text-muted hover:text-ink'
+                className={`relative px-3 py-2 text-[15px] transition-colors ${
+                  active === id ? 'font-medium text-accent' : 'text-muted hover:text-ink'
                 }`}
               >
                 {label}
-                {active === id && (
-                  <span className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded bg-grad-primary" aria-hidden="true" />
-                )}
+                {active === id && <span className="absolute inset-x-3 -bottom-0.5 h-px bg-accent" aria-hidden="true" />}
               </a>
             </li>
           ))}
@@ -78,7 +76,7 @@ export default function Navbar() {
           <ThemeToggle theme={theme} onToggle={toggle} />
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-btn border border-line"
+            className="grid h-11 w-11 place-items-center rounded-btn border border-line transition-colors hover:border-accent"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -98,7 +96,7 @@ export default function Navbar() {
                   href={`#${id}`}
                   onClick={() => setOpen(false)}
                   aria-current={active === id ? 'true' : undefined}
-                  className={`block rounded-lg px-3 py-3.5 ${active === id ? 'bg-elevated font-semibold text-indigo' : 'text-muted'}`}
+                  className={`block border-b border-line px-1 py-3.5 ${active === id ? 'font-medium text-accent' : 'text-muted'}`}
                 >
                   {label}
                 </a>

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Github, ExternalLink, ChevronDown } from 'lucide-react'
-import Card from './Card.jsx'
 import Button from './Button.jsx'
 
+// Image-led editorial layout (no card box). The featured project gets a larger image column.
 export default function ProjectCard({ project, reverse = false }) {
   const [open, setOpen] = useState(false)
   const { id, title, category, description, features, technologies, images = [], githubUrl, liveUrl, featured } = project
@@ -11,13 +11,11 @@ export default function ProjectCard({ project, reverse = false }) {
   const panelId = `details-${id}`
 
   return (
-    <Card
-      className={`group grid gap-8 lg:grid-cols-2 lg:items-center lg:gap-12 lg:!p-8 ${
-        featured ? 'border-indigo/40 shadow-glow' : ''
-      }`}
+    <article
+      className={`grid gap-8 lg:items-center lg:gap-14 ${featured ? 'lg:grid-cols-[1.4fr_1fr]' : 'lg:grid-cols-[1fr_1fr]'}`}
     >
       <div className={`min-w-0 ${reverse ? 'lg:order-2' : ''}`}>
-        <div className="overflow-hidden rounded-xl border border-line bg-bg">
+        <div className="overflow-hidden rounded-xl border border-line bg-surface">
           {current ? (
             <img
               key={current.src}
@@ -27,28 +25,27 @@ export default function ProjectCard({ project, reverse = false }) {
               height="800"
               loading="lazy"
               decoding="async"
-              className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="aspect-[16/10] w-full object-cover"
             />
           ) : (
-            <div className="grid aspect-[16/10] place-items-center bg-dots p-4 text-center text-sm text-muted">
+            <div className="grid aspect-[16/10] place-items-center p-6 text-center">
               <span>
-                {title} screenshot
-                <br />
-                (real screenshot to be added)
+                <span className="block font-display text-3xl text-muted">{title}</span>
+                <span className="mt-2 block font-mono text-xs text-muted">(real screenshot to be added)</span>
               </span>
             </div>
           )}
         </div>
         {images.length > 1 && (
-          <div className="mt-3 flex gap-2" role="group" aria-label={`${title} screenshots`}>
+          <div className="mt-3 flex gap-5" role="group" aria-label={`${title} screenshots`}>
             {images.map((img, i) => (
               <button
                 key={img.src}
                 type="button"
                 onClick={() => setShot(i)}
                 aria-pressed={i === shot}
-                className={`min-h-[40px] rounded-btn border px-4 text-sm font-medium transition-colors ${
-                  i === shot ? 'border-indigo bg-indigo/10 text-indigo' : 'border-field text-muted hover:text-ink'
+                className={`min-h-[40px] border-b-2 text-sm font-medium transition-colors ${
+                  i === shot ? 'border-accent text-ink' : 'border-transparent text-muted hover:text-ink'
                 }`}
               >
                 {img.label}
@@ -59,14 +56,14 @@ export default function ProjectCard({ project, reverse = false }) {
       </div>
 
       <div className="min-w-0">
-        {featured && <p className="eyebrow mb-1">featured project</p>}
-        <p className="text-sm text-cyan">{category}</p>
-        <h3 className={`mt-1 font-extrabold ${featured ? 'text-3xl sm:text-4xl' : 'text-2xl sm:text-3xl'}`}>{title}</h3>
-        <p className="mt-3 text-muted">{description}</p>
+        {featured && <p className="eyebrow mb-2">featured project</p>}
+        <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted">{category}</p>
+        <h3 className={`mt-2 ${featured ? 'text-4xl sm:text-5xl' : 'text-3xl sm:text-4xl'}`}>{title}</h3>
+        <p className="mt-4 text-ink/80">{description}</p>
 
-        <ul className="mt-5 flex flex-wrap gap-2">
+        <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1 font-mono text-xs text-muted">
           {technologies.map((t) => (
-            <li key={t} className="tag !text-xs">{t}</li>
+            <li key={t}>{t}</li>
           ))}
         </ul>
 
@@ -96,6 +93,6 @@ export default function ProjectCard({ project, reverse = false }) {
           {!githubUrl && !liveUrl && <span className="text-sm text-muted">Links coming soon</span>}
         </div>
       </div>
-    </Card>
+    </article>
   )
 }

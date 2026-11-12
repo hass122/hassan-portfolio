@@ -22,7 +22,7 @@ export default function BackToTop() {
       type="button"
       onClick={goTop}
       aria-label="Back to top"
-      className="fixed bottom-6 right-6 z-40 grid h-12 w-12 place-items-center rounded-full border border-line bg-card text-ink shadow-soft transition-colors hover:border-cyan"
+      className="fixed bottom-6 right-6 z-40 grid h-11 w-11 place-items-center rounded-btn border border-line bg-card text-ink shadow-soft transition-colors hover:border-accent hover:text-accent"
       style={{ marginBottom: 'env(safe-area-inset-bottom, 0px)' }}
     >
       <ArrowUp size={20} aria-hidden="true" />

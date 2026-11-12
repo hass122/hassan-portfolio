@@ -9,7 +9,7 @@ function apply(theme) {
   const root = document.documentElement
   root.classList.add('theme-transition')
   root.dataset.theme = theme
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#F5F7FF' : '#080B14')
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'light' ? '#F7F5EF' : '#211F1C')
   window.setTimeout(() => root.classList.remove('theme-transition'), 350)
 }
 

@@ -2,58 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---- Theme tokens (RGB triplets so Tailwind opacity modifiers work) ---- */
+/* ---- Theme tokens (RGB triplets so Tailwind opacity modifiers work) ----
+   Dark  = Midnight Editorial (warm charcoal, antique brass)
+   Light = Warm Editorial (cream paper, olive green, terracotta) */
 :root,
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --c-bg: 8 11 20; /* #080B14 */
-  --c-surface: 16 24 39; /* #101827 */
-  --c-card: 21 30 48; /* #151E30 */
-  --c-elevated: 27 38 59; /* #1B263B */
-  --c-line: 39 52 73; /* #273449 */
-  --c-field: 51 65 85;
-  --c-accent: 99 102 241; /* #6366F1 */
-  --c-purple: 139 92 246; /* #8B5CF6 */
-  --c-cyan: 6 182 212; /* #06B6D4 */
-  --c-aqua: 6 182 212;
-  --c-ink: 255 255 255;
-  --c-body: 212 212 216;
-  --c-muted: 161 161 170; /* #A1A1AA */
-  --c-sub: 6 182 212;
-  --c-oncyan: 8 11 20;
-  --c-btn2border: 99 102 241;
-  --c-btn2text: 255 255 255;
-  --c-success: 34 197 94;
-  --c-danger: 239 68 68;
-  --dot: 255 255 255 / 0.07;
-  --shadow-soft: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
-  --shadow-glow: 0 0 0 1px rgba(99, 102, 241, 0.5), 0 12px 32px -14px rgba(99, 102, 241, 0.45);
+  --c-bg: 33 31 28; /* #211F1C */
+  --c-surface: 41 39 34; /* #292722 */
+  --c-card: 48 46 40; /* #302E28 */
+  --c-line: 69 65 56; /* #454138 */
+  --c-field: 90 85 73; /* #5A5549 */
+  --c-ink: 240 237 229; /* #F0EDE5 */
+  --c-muted: 170 166 155; /* #AAA69B */
+  --c-accent: 182 154 112; /* #B69A70 antique brass */
+  --c-clay: 167 123 101; /* #A77B65 */
+  --c-onaccent: 33 31 28;
+  --c-success: 127 176 105;
+  --c-danger: 224 122 102;
+  --shadow-soft: none;
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --c-bg: 245 247 255; /* #F5F7FF */
-  --c-surface: 238 242 255; /* #EEF2FF */
-  --c-card: 255 255 255;
-  --c-elevated: 232 234 254; /* #E8EAFE lavender */
-  --c-line: 226 232 240; /* #E2E8F0 */
-  --c-field: 148 163 184; /* slate-400, readable form/timeline borders */
-  --c-accent: 79 70 229; /* #4F46E5 */
-  --c-purple: 124 58 237; /* #7C3AED */
-  --c-cyan: 2 132 199; /* #0284C7 electric blue */
-  --c-aqua: 6 182 212;
-  --c-ink: 17 24 39; /* #111827 */
-  --c-body: 51 65 85;
-  --c-muted: 71 85 105; /* #475569 */
-  --c-sub: 67 56 202; /* #4338CA */
-  --c-oncyan: 255 255 255;
-  --c-btn2border: 165 180 252; /* #A5B4FC */
-  --c-btn2text: 67 56 202;
-  --c-success: 21 128 61;
-  --c-danger: 220 38 38;
-  --dot: 79 70 229 / 0.14;
-  --shadow-soft: 0 1px 2px rgba(15, 23, 42, 0.06), 0 14px 30px -14px rgba(79, 70, 229, 0.28);
-  --shadow-glow: 0 0 0 1px rgba(79, 70, 229, 0.35), 0 14px 34px -16px rgba(79, 70, 229, 0.35);
+  --c-bg: 247 245 239; /* #F7F5EF */
+  --c-surface: 247 245 239; /* same canvas: sections are separated by dividers, not colored panels */
+  --c-card: 255 255 255; /* #FFFFFF */
+  --c-line: 228 224 214; /* #E4E0D6 */
+  --c-field: 207 202 188; /* #CFCABC */
+  --c-ink: 36 37 31; /* #24251F */
+  --c-muted: 119 118 110; /* #77766E */
+  --c-accent: 104 118 91; /* #68765B olive */
+  --c-clay: 196 119 85; /* #C47755 terracotta */
+  --c-onaccent: 255 255 255;
+  --c-success: 77 124 58;
+  --c-danger: 179 65 47;
+  --shadow-soft: 0 1px 2px rgba(36, 37, 31, 0.05);
 }
 
 @layer base {
@@ -62,78 +46,40 @@
     scroll-padding-top: 80px;
   }
   body {
-    @apply bg-bg font-sans text-[17px] leading-relaxed text-ink antialiased;
+    @apply bg-bg font-sans text-base leading-relaxed text-ink antialiased sm:text-[17px];
     overflow-x: hidden;
   }
   p, li, h1, h2, h3 {
     overflow-wrap: break-word;
   }
   h1, h2, h3, h4 {
-    @apply font-display leading-tight;
+    @apply font-display font-normal leading-tight tracking-tight;
   }
   :focus-visible {
-    @apply outline outline-2 outline-offset-2 outline-cyan;
+    @apply outline outline-2 outline-offset-2 outline-accent;
   }
   ::selection {
-    background: rgb(var(--c-accent) / 0.35);
+    background: rgb(var(--c-accent) / 0.3);
   }
 }
 
-@keyframes drift {
-  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(3%, 4%, 0) scale(1.08); }
-}
-@keyframes floaty {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-@keyframes turn {
-  to { transform: rotate(360deg); }
-}
 @keyframes fadein {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @layer components {
+  /* Cards are used sparingly (the contact form); most content uses open layouts and dividers. */
   .surface-card {
-    @apply rounded-card border border-line bg-card bg-gradient-to-b from-ink/[0.03] to-transparent p-6 shadow-soft sm:p-8;
+    @apply rounded-card border border-line bg-card p-6 shadow-soft sm:p-8;
   }
+  /* Small monospace label above a heading */
   .eyebrow {
-    @apply text-sm font-semibold uppercase tracking-[0.14em] text-cyan;
+    @apply font-mono text-xs uppercase tracking-[0.16em] text-accent;
   }
-  .text-gradient {
-    @apply bg-grad-primary bg-clip-text text-transparent;
-  }
+  /* Plain text label for dates, durations and statuses (not a pill) */
   .tag {
-    @apply rounded-full border border-line bg-bg px-3 py-1 text-sm text-ink;
-  }
-  .bg-dots {
-    background-image: radial-gradient(rgb(var(--dot)) 1px, transparent 1px);
-    background-size: 26px 26px;
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
-    mask-image: radial-gradient(ellipse at center, #000 25%, transparent 72%);
-  }
-  .ambient {
-    @apply pointer-events-none absolute -z-10 rounded-full blur-3xl;
-    animation: drift 18s ease-in-out infinite;
-  }
-  .float-slow {
-    animation: floaty 7s ease-in-out infinite;
-  }
-  /* Profile frame with a slowly rotating gradient border */
-  .spin-border {
-    position: relative;
-    overflow: hidden;
-    border-radius: 28px;
-    padding: 2px;
-  }
-  .spin-border::before {
-    content: '';
-    position: absolute;
-    inset: -60%;
-    background: conic-gradient(from 0deg, rgb(var(--c-accent)), rgb(var(--c-aqua)), rgb(var(--c-purple)), rgb(var(--c-accent)));
-    animation: turn 9s linear infinite;
+    @apply font-mono text-xs text-muted;
   }
   .page-fade {
     animation: fadein 0.4s ease-out;
@@ -143,7 +89,7 @@
   .theme-transition *,
   .theme-transition *::before,
   .theme-transition *::after {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
   }
 }
 
