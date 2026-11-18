@@ -29,5 +29,5 @@
 - [ ] After deploy: no "blocked by CSP" errors in console (see `vercel.json`)
 
 ## C. Still missing real content (not bugs)
-Resume PDF, profile photo, project screenshots, GitHub/LinkedIn/WhatsApp links, project GitHub/live URLs,
-certificates, real domain in `public/sitemap.xml` and `public/robots.txt`.
+Details and the full to-do list are in `docs/ROADMAP.md`. Resume, profile photo, LinkedIn/GitHub, NexusBids live link and the real domain are done.
+Still open: Durian Superman live/GitHub links, NexusBids GitHub link, more NexusBids screenshots, WhatsApp, certificates.

@@ -5,7 +5,13 @@ import Button from './Button.jsx'
 // Image-led editorial layout (no card box). The featured project gets a larger image column.
 export default function ProjectCard({ project, reverse = false }) {
   const [open, setOpen] = useState(false)
-  const { id, title, category, description, features, technologies, images = [], githubUrl, liveUrl, featured } = project
+  const { id, title, category, description, features, technologies, images = [], githubUrl, liveUrl, featured, caseStudy } = project
+  const study = [
+    ['The problem', caseStudy?.problem],
+    ['My role', caseStudy?.role],
+    ['Hardest part', caseStudy?.challenge],
+    ['Result', caseStudy?.result],
+  ].filter(([, text]) => text)
   const [shot, setShot] = useState(0)
   const current = images[shot]
   const panelId = `details-${id}`
@@ -68,11 +74,23 @@ export default function ProjectCard({ project, reverse = false }) {
         </ul>
 
         {open && (
-          <ul id={panelId} className="mt-5 list-disc space-y-1 pl-5 text-sm text-muted">
-            {features.map((f) => (
-              <li key={f}>{f}</li>
-            ))}
-          </ul>
+          <div id={panelId}>
+            {study.length > 0 && (
+              <dl className="mt-5 divide-y divide-line border-y border-line">
+                {study.map(([label, text]) => (
+                  <div key={label} className="grid gap-1 py-3 sm:grid-cols-[7.5rem_1fr] sm:gap-4">
+                    <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted sm:pt-1">{label}</dt>
+                    <dd className="text-sm text-ink/80">{text}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+            <ul className="mt-5 list-disc space-y-1 pl-5 text-sm text-muted">
+              {features.map((f) => (
+                <li key={f}>{f}</li>
+              ))}
+            </ul>
+          </div>
         )}
 
         <div className="mt-6 flex flex-wrap items-center gap-3">

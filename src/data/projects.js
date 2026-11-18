@@ -1,5 +1,7 @@
 // Real projects only. Leave githubUrl/liveUrl as '' until real values exist;
-// the UI hides empty links. `images` is a list of screenshots (the card shows a switcher when there are several).
+// the UI hides empty links. `images` is a list of screenshots (the card shows a switcher when there are several;
+// a demo GIF/WebP can be added there too, e.g. { src: '/images/nexusbids-demo.gif', alt: '...', label: 'Demo' }).
+// `caseStudy` is optional: fill in the four fields (your own words) and they appear under "View details".
 const projects = [
   {
     id: 'nexusbids',
@@ -22,6 +24,7 @@ const projects = [
     images: [{ src: '/images/nexusbids.webp', alt: 'NexusBids home page with a live auction card', label: 'Home' }],
     githubUrl: '',
     liveUrl: 'https://nexusbids.vercel.app/',
+    caseStudy: { problem: '', role: '', challenge: '', result: '' },
   },
   {
     id: 'durian-superman',
@@ -46,6 +49,7 @@ const projects = [
     ],
     githubUrl: '',
     liveUrl: '',
+    caseStudy: { problem: '', role: '', challenge: '', result: '' },
   },
 ]
 

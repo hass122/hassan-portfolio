@@ -10,6 +10,8 @@ const facts = [
   { title: 'Learning by doing', text: 'Project-based, with real bugs along the way' },
   { title: 'Interests', text: 'Frontend and full-stack web development' },
   { title: 'Languages', text: 'English, Urdu, Sindhi' },
+  // Only shown when personal.learning is filled in.
+  ...(personal.learning ? [{ title: 'Currently learning', text: personal.learning }] : []),
 ]
 
 export default function About() {

@@ -9,6 +9,7 @@ const personal = {
   linkedin: 'https://www.linkedin.com/in/hassan-raza-704b53205',
   github: 'https://github.com/hass122',
   whatsapp: '',
+  learning: '', // optional, e.g. 'Next.js and testing'. Shown in About only when filled in.
   university: 'Isra University, Hyderabad Campus',
   degree: 'BS Software Engineering',
   semester: '8th Semester', // update as studies progress

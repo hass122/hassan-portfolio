@@ -1,4 +1,5 @@
-import { Mail } from 'lucide-react'
+import { useState } from 'react'
+import { Mail, Copy, Check, FileText } from 'lucide-react'
 import personal from '../../data/personal.js'
 import { isContactConfigured } from '../../services/contactService.js'
 import useContactForm from '../../hooks/useContactForm.js'
@@ -24,6 +25,18 @@ function Field({ id, label, error, children }) {
 export default function Contact() {
   const { values, errors, status, handleChange, handleSubmit } = useContactForm()
   const loading = status === 'loading'
+  const [copied, setCopied] = useState(false)
+
+  // Copies the email address. If the browser blocks clipboard access nothing breaks; the mailto link still works.
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personal.email)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {
+      setCopied(false)
+    }
+  }
 
   const props = (name) => ({
     id: name,
@@ -45,7 +58,29 @@ export default function Contact() {
             <Mail size={20} className="text-accent" aria-hidden="true" />
             {personal.email}
           </a>
-          <SocialLinks skipEmail withLabels className="mt-6" />
+          <div className="mt-3 flex flex-wrap items-center gap-x-6 gap-y-1">
+            <button
+              type="button"
+              onClick={copyEmail}
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+            >
+              {copied ? <Check size={16} aria-hidden="true" /> : <Copy size={16} aria-hidden="true" />}
+              {copied ? 'Copied' : 'Copy email'}
+            </button>
+            <span className="sr-only" role="status">{copied ? 'Email address copied' : ''}</span>
+            {personal.resumeUrl && (
+              <a
+                href={personal.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center gap-2 text-sm text-muted underline-offset-4 transition-colors hover:text-accent hover:underline"
+              >
+                <FileText size={16} aria-hidden="true" />
+                View CV online
+              </a>
+            )}
+          </div>
+          <SocialLinks skipEmail withLabels className="mt-3" />
         </Reveal>
 
         <Reveal delay={0.1}>

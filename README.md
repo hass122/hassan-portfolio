@@ -27,7 +27,15 @@ Images go in `public/images/`, the CV is `public/resume.pdf`.
 1. Push this folder to a GitHub repository (do not commit `.env`).
 2. In Vercel: Add New > Project > import the repository. Framework preset: Vite. Build command `npm run build`, output `dist`.
 3. Settings > Environment Variables: add `VITE_FORMSPREE_ENDPOINT`.
-4. Deploy, then replace `YOUR-DOMAIN` in `public/sitemap.xml` and `public/robots.txt` with the real URL and push again.
+4. Deploy. Sitemap, robots, canonical and og:url already use https://hassan-portfolio-pied.vercel.app. If you add a custom domain, update those four places (`public/sitemap.xml`, `public/robots.txt`, `index.html` canonical + og tags + JSON-LD) and push again.
 5. Test: contact form, CV download, links, mobile layout, browser console (security headers are in `vercel.json`).
+
+## Extras
+- **CI:** `.github/workflows/ci.yml` runs `npm run build` on every push to `main` and on pull requests.
+- **Formatting:** `npm run format` (Prettier, config in `.prettierrc`); `npm run format:check` only checks.
+- **Case studies:** fill `caseStudy` (problem, role, challenge, result) in `src/data/projects.js`; it shows under "View details" once any field has text.
+- **Demo GIF/WebP:** add it to a project's `images` list with the label `Demo`.
+- **Currently learning:** set `learning` in `src/data/personal.js` to show it in About.
+- **404 page:** `public/404.html`.
 
 Docs: see `docs/` (requirements, design specification, testing report).
